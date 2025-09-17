@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* Button Components */
+    .btn-primary {
+        @apply bg-arsenic-primary text-arsenic-light px-4 py-2 rounded-md font-medium transition-all duration-200 hover:bg-arsenic-accent hover:text-arsenic-dark focus:outline-none focus:ring-2 focus:ring-arsenic-accent focus:ring-opacity-50;
+    }
+    
+    .btn-secondary {
+        @apply bg-arsenic-accent text-arsenic-dark px-4 py-2 rounded-md font-medium transition-all duration-200 hover:bg-arsenic-primary hover:text-arsenic-light focus:outline-none focus:ring-2 focus:ring-arsenic-primary focus:ring-opacity-50;
+    }
+    
+    .btn-outline {
+        @apply border-2 border-arsenic-primary text-arsenic-primary bg-transparent px-4 py-2 rounded-md font-medium transition-all duration-200 hover:bg-arsenic-primary hover:text-arsenic-light focus:outline-none focus:ring-2 focus:ring-arsenic-primary focus:ring-opacity-50;
+    }
+    
+    /* Form Components */
+    .form-input {
+        @apply border-2 border-arsenic-primary rounded-md px-3 py-2 bg-arsenic-light text-arsenic-dark placeholder-gray-500 transition-all duration-200 focus:border-arsenic-accent focus:ring-2 focus:ring-arsenic-accent focus:ring-opacity-20 focus:outline-none;
+    }
+    
+    .form-select {
+        @apply border-2 border-arsenic-primary rounded-md px-3 py-2 bg-arsenic-light text-arsenic-dark transition-all duration-200 focus:border-arsenic-accent focus:ring-2 focus:ring-arsenic-accent focus:ring-opacity-20 focus:outline-none;
+    }
+    
+    /* Card Components */
+    .card {
+        @apply bg-arsenic-light border border-arsenic-primary rounded-lg shadow-lg overflow-hidden;
+    }
+    
+    .card-header {
+        @apply bg-arsenic-primary text-arsenic-light px-6 py-4 font-semibold;
+    }
+    
+    .card-body {
+        @apply p-6;
+    }
+    
+    /* Table Components */
+    .table {
+        @apply w-full bg-arsenic-light border border-arsenic-primary rounded-lg overflow-hidden;
+    }
+    
+    .table th {
+        @apply bg-arsenic-primary text-arsenic-light px-4 py-3 text-left font-semibold;
+    }
+    
+    .table td {
+        @apply px-4 py-3 border-b border-arsenic-primary-200 text-arsenic-dark;
+    }
+    
+    .table tr:nth-child(even) {
+        @apply bg-arsenic-primary-50;
+    }
+    
+    .table tr:hover {
+        @apply bg-arsenic-accent-50;
+    }
+    
+    /* Alert Components */
+    .alert-success {
+        @apply bg-arsenic-accent-50 border border-arsenic-accent text-arsenic-dark px-4 py-3 rounded-md;
+    }
+    
+    .alert-error {
+        @apply bg-red-50 border border-red-400 text-red-800 px-4 py-3 rounded-md;
+    }
+    
+    .alert-warning {
+        @apply bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-md;
+    }
+    
+    .alert-info {
+        @apply bg-arsenic-primary-50 border border-arsenic-primary text-arsenic-dark px-4 py-3 rounded-md;
+    }
+    
+    /* Badge Components */
+    .badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+    
+    .badge-primary {
+        @apply badge bg-arsenic-primary text-arsenic-light;
+    }
+    
+    .badge-accent {
+        @apply badge bg-arsenic-accent text-arsenic-dark;
+    }
+    
+    .badge-light {
+        @apply badge bg-arsenic-primary-100 text-arsenic-primary;
+    }
+}
+
+@layer base {
+    body {
+        @apply bg-arsenic-light text-arsenic-dark;
+    }
+    
+    a {
+        @apply text-arsenic-primary hover:text-arsenic-accent transition-colors duration-200;
+    }
+}
