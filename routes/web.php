@@ -11,7 +11,7 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProjectTypeController;
 use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
@@ -138,16 +138,33 @@ Route::middleware(['permission:view_incomes'])->group(function () {
 
 // View Expense Data - Permission 'view_expenses'
 Route::middleware(['permission:view_expenses'])->group(function () {
-    Route::get('/expenses', [FinanceController::class, 'expensesIndex'])->name('finances.expenses');
-    Route::get('/expenses/{expense}', [FinanceController::class, 'expenseShow'])->name('expenses.show');
+    Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
+    Route::get('/expenses/{expense}', [ExpenseController::class, 'show'])->name('expenses.show');
 });
 // Approved Expense - Permission 'view_approved_expenses'
 Route::middleware(['permission:view_approved_expenses'])->group(function () {
-    Route::get('/expenses/approved', [FinanceController::class, 'approvedExpensesIndex'])->name('expenses.approved.index');
-    Route::get('/expenses/approved/{expense}', [FinanceController::class, 'approvedExpenseShow'])->name('expenses.approved.show');
+    Route::get('/expenses/approved', [ExpenseController::class, 'approvedExpensesIndex'])->name('expenses.approved.index');
+    Route::get('/expenses/approved/{expense}', [ExpenseController::class, 'approvedExpenseShow'])->name('expenses.approved.show');
 });
 
 
 
 // Include authentication routes
 require __DIR__ . '/auth.php';
+
+
+// Project Type Management - Permission 'manage_project_types'
+Route::middleware(['permission:manage_project_types'])->group(function () {
+    // Project Types Routes
+    Route::resource('project-types', ProjectTypeController::class);
+    Route::patch('project-types/{projectType}/toggle-status', [ProjectTypeController::class, 'toggleStatus'])
+        ->name('project-types.toggle-status');
+});
+
+// View Project Types
+Route::get('/project-types', [ProjectTypeController::class, 'index'])
+    ->name('project-types.index')
+    ->middleware('permission:view_project_types');
+Route::get('/project-types/{projectType}', [ProjectTypeController::class, 'show'])
+    ->name('project-types.show')
+    ->middleware('permission:view_project_types');

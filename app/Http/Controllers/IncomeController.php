@@ -219,10 +219,10 @@ class IncomeController extends Controller
         }
 
         $income->load(['project', 'createdBy']);
-        
+
         // Generate PDF using DomPDF
-        $pdf = \PDF::loadView('finance.incomes.invoice', compact('income'));
-        
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('finance.incomes.invoice', compact('income'));
+
         return $pdf->download('invoice-' . $income->invoice_number . '.pdf');
     }
 }

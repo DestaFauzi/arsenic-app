@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             ProjectTypeSeeder::class,
-            ProjectSeeder::class, // Tambahkan ini
+            // ProjectSeeder::class, // Tambahkan ini
         ]);
     }
 }

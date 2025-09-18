@@ -126,6 +126,13 @@ class RoleController extends Controller
                 'manage_roles' => 'Kelola Roles & Permissions',
                 'view_roles' => 'Lihat Roles'
             ],
+            'Project Type Management' => [
+                'manage_project_types' => 'Kelola Semua Tipe Proyek',
+                'view_project_types' => 'Lihat Tipe Proyek',
+                'create_project_types' => 'Buat Tipe Proyek',
+                'edit_project_types' => 'Edit Tipe Proyek',
+                'delete_project_types' => 'Hapus Tipe Proyek'
+            ],
             'Project Management' => [
                 'manage_projects' => 'Kelola Semua Project',
                 'view_projects' => 'Lihat Project',

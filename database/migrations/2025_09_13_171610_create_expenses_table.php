@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null'); // karyawan
             $table->decimal('amount', 15, 2);
             $table->string('category'); // salary, bonus, operational, etc

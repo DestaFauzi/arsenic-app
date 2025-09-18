@@ -160,5 +160,25 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('execute_incomes', function (User $user) {
             return $user->hasPermission('execute_incomes');
         });
+
+        Gate::define('manage_project_types', function (User $user) {
+            return $user->hasPermission('manage_project_types');
+        });
+
+        Gate::define('view_project_types', function (User $user) {
+            return $user->hasPermission('view_project_types');
+        });
+
+        Gate::define('create_project_types', function (User $user) {
+            return $user->hasPermission('create_project_types');
+        });
+
+        Gate::define('edit_project_types', function (User $user) {
+            return $user->hasPermission('edit_project_types');
+        });
+
+        Gate::define('delete_project_types', function (User $user) {
+            return $user->hasPermission('delete_project_types');
+        });
     }
 }

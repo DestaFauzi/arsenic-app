@@ -26,7 +26,14 @@ class Finance extends Model
         'created_by'
     ];
 
+    // Add status constants
+    const STATUS_PENDING = 1;
+    const STATUS_APPROVED = 2;
+    const STATUS_PAID = 3;
+    
+    // Update casts if needed
     protected $casts = [
+        'status' => 'integer',
         'amount' => 'decimal:2',
         'tax_percentage' => 'decimal:2',
         'tax_amount' => 'decimal:2',

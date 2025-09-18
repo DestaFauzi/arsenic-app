@@ -25,6 +25,13 @@ class RoleSeeder extends Seeder
                     'manage_roles',
                     'view_roles',
 
+                    // Project Type Management
+                    'manage_project_types',
+                    'view_project_types',
+                    'create_project_types', 
+                    'edit_project_types',
+                    'delete_project_types',
+
                     // Project Management (Updated from Product Management)
                     'manage_projects',
                     'view_projects',
@@ -66,6 +73,9 @@ class RoleSeeder extends Seeder
                 'description' => 'Can manage content and view users',
                 'permissions' => [
                     'view_users',
+                    'view_project_types',
+                    'create_project_types',
+                    'edit_project_types',
                     'view_projects',
                     'edit_projects',
                     'view_orders',
@@ -78,6 +88,7 @@ class RoleSeeder extends Seeder
                 'description' => 'Mengelola project dan tim',
                 'permissions' => [
                     'view_users',
+                    'view_project_types',
                     'manage_projects',
                     'view_projects',
                     'edit_projects',

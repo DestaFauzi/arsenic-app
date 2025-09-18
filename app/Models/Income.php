@@ -11,6 +11,7 @@ class Income extends Model
     use HasFactory;
 
     // Status constants
+    const STATUS_PENDING = 0;
     const STATUS_NEED_ACCOUNTING_APPROVAL = 1;
     const STATUS_NEED_DEPT_HEAD_APPROVAL = 2;
     const STATUS_NEED_PRESIDENT_APPROVAL = 3;
@@ -66,6 +67,7 @@ class Income extends Model
     public static function getStatusOptions(): array
     {
         return [
+            self::STATUS_PENDING => 'Pending',
             self::STATUS_NEED_ACCOUNTING_APPROVAL => 'Need Accounting Approval',
             self::STATUS_NEED_DEPT_HEAD_APPROVAL => 'Need Dept Head Approval',
             self::STATUS_NEED_PRESIDENT_APPROVAL => 'Need President Approval',
@@ -85,6 +87,7 @@ class Income extends Model
     public function getStatusColorAttribute(): string
     {
         return match ($this->status) {
+            0 => 'gray',
             1 => 'yellow',
             2 => 'blue',
             3 => 'purple',

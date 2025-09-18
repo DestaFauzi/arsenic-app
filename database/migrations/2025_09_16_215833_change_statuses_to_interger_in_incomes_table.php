@@ -12,17 +12,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Update existing string values to integer values
-        DB::table('incomes')->where('status', 'pending')->update(['status' => '1']);
-        DB::table('incomes')->where('status', 'received')->update(['status' => '2']);
+        // Check if table exists before updating
+        if (Schema::hasTable('incomes')) {
+            // Update existing string values to integer values
+            DB::table('incomes')->where('status', 'pending')->update(['status' => 1]);
+            DB::table('incomes')->where('status', 'received')->update(['status' => 2]);
 
-        Schema::table('incomes', function (Blueprint $table) {
-            // Change status column from enum to integer
-            $table->integer('status')->default(1)->change();
+            Schema::table('incomes', function (Blueprint $table) {
+                // Change status column from enum to tinyInteger for better performance
+                $table->tinyInteger('status')->default(1)->change();
 
-            // Add index for better performance
-            $table->index('status');
-        });
+                // Add index for better performance
+                $table->index('status');
+            });
+        }
     }
 
     /**
@@ -30,19 +33,21 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Update integer values back to string values
-        DB::table('incomes')->where('status', 1)->update(['status' => 'pending']);
-        DB::table('incomes')->where('status', 2)->update(['status' => 'received']);
-        DB::table('incomes')->where('status', 3)->update(['status' => 'pending']);
-        DB::table('incomes')->where('status', 4)->update(['status' => 'pending']);
-        DB::table('incomes')->where('status', 5)->update(['status' => 'received']);
+        if (Schema::hasTable('incomes')) {
+            // Update integer values back to string values
+            DB::table('incomes')->where('status', 1)->update(['status' => 'pending']);
+            DB::table('incomes')->where('status', 2)->update(['status' => 'received']);
+            DB::table('incomes')->where('status', 3)->update(['status' => 'pending']);
+            DB::table('incomes')->where('status', 4)->update(['status' => 'pending']);
+            DB::table('incomes')->where('status', 5)->update(['status' => 'received']);
 
-        Schema::table('incomes', function (Blueprint $table) {
-            // Drop the index first
-            $table->dropIndex(['status']);
+            Schema::table('incomes', function (Blueprint $table) {
+                // Drop the index first
+                $table->dropIndex(['status']);
 
-            // Change back to enum
-            $table->enum('status', ['pending', 'received'])->default('pending')->change();
-        });
+                // Change back to enum
+                $table->enum('status', ['pending', 'received'])->default('pending')->change();
+            });
+        }
     }
 };
